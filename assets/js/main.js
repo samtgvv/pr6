@@ -1,56 +1,53 @@
-'use strict'
+"use strict"
 
-// 1 задание
+// Задание 1
+console.log(document.querySelector('div'));
+console.log(document.querySelector('ul'));
+console.log(document.querySelector('ul > li:last-child'));
 
-zad1.onclick = function () {
 
-    console.log(document.body.firstElementChild);
-    console.log(document.body.children[1]);
-    console.log(document.body.children[1].lastElementChild);
+// Задание 2
+let ul = document.querySelectorAll('ul > li');
+for (let li of ul) {
+    console.log(li.innerHTML);
+    li.classList.add('list-item');
+    console.log(li.className);
 }
 
-// 2 задание
+// Задание 3
+let num = +prompt('Введите число');
 
-zad2.onclick = function () {
-
-    let elems = document.querySelectorAll('li');
-
-    for (let elem of elems) {
-        elem.classList.add('.list-item');
-    }
+for (let i = 0; i < num; i++) {
+    let body = document.querySelector('body');
+    let div = document.createElement('div');
+    div.className = 'square';
+    div.style.background = 'purple';
+    div.style.width = '100px';
+    div.style.height = '100px';
+    div.style.margin = '20px'
+    body.append(div);
 }
 
-// 3 задание
+// Задание 4
+let body = document.querySelector('body');
+let form = document.createElement('form');
+let inputName = document.createElement('input');
+let inputEmail = document.createElement('input');
+let btn = document.createElement('button');
+form.style.display = 'flex';
+form.style.flexDirection = 'column';
+form.style.gap = '20px';
+form.style.width = '300px';
 
-zad3.onclick = function () {
+inputName.placeholder = 'Введите имя';
+inputName.style.padding = '10px';
 
-    let value = +prompt('Введите цифру', 0);
+inputEmail.placeholder = 'Введите email';
+inputEmail.style.padding = '10px';
 
-    for (let i = 1; i <= value; i++) {
-        let div = document.createElement('div');
-        div.className = 'block';
-        div.innerHTML = `${i} блок`;
-        document.body.append(div);
-    }
-}
+btn.innerHTML = 'Отправить';
+btn.style.padding = '10px';
 
 
-// 4 задание
-
-zad4.onclick = function () {
-
-    let form = document.createElement('form');
-    let name = document.createElement('input');
-    let email = document.createElement('input');
-    let btn = document.createElement('button');
-
-    name.placeholder = 'Имя';
-    email.placeholder = 'Email';
-    btn.innerHTML = 'Отпраить';
-
-    document.body.append(form);
-    document.body.lastElementChild.append(name);
-    document.body.lastElementChild.append(email);
-    document.body.lastElementChild.append(btn);
-
-}
+form.append(inputName, inputEmail, btn);
+body.append(form);
